@@ -9,7 +9,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="shortcut icon" href="./payoo.png" type="image/x-icon">
 </head>
-<body>
-
+<body class=" bg-[#F4F5F7] h-[100vh]  flex justify-center items-center flex-col">
+ 
+   <div class="w-[300px] h-[120px] bg-[url(./assets/bg.png)] bg-cover flex justify-center items-center ">
+       
+      
+            <img src="./assets/Group.png" alt="">
+        
+   </div>
+   <form class=" bg-white rounded-2xl p-8 w-[350px]" >
+       <div class="">
+        <label class="font-semibold">Mobile Number</label> <br>
+        <input type="text" placeholder="Enter Your Number" class="input rounded-3xl bg-[#F4F5F7] mt-3" />
+      </div>
+      <div class="mt-5">
+         <label class="font-semibold">4 Digit Pin</label> <br>
+         <input type="text" placeholder="Enter 4 Digit Pin" class="input rounded-3xl bg-[#F4F5F7] mt-3" /><br>
+      </div>
+       
+      <button id="login-btn" class="btn bg-[#0874F2] rounded-3xl mt-7 w-full text-white">Login</button>
+   </form>
+      
+   
+   <script src="./js/home.js"></script>
 </body>
 </html>
