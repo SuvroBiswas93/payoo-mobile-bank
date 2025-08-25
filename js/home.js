@@ -15,6 +15,19 @@ function getInputValueOnly(id){
     return inputFieldValue;
 }
 
+function getInnerText(id){
+    const element = document.getElementById(id);
+    const elementValue = element.innerText;
+    const elementValueNumberConversion = parseInt(elementValue)
+    return elementValueNumberConversion;
+}
+
+
+function setInnertext(value){
+    const availablebalanceElement = document.getElementById('available-balance')
+    availablebalanceElement.innerText = value;
+    
+}
 
 document.getElementById('add-money-btn').addEventListener('click',function(event){
     event.preventDefault();
@@ -23,7 +36,7 @@ document.getElementById('add-money-btn').addEventListener('click',function(event
     const addAmount = getInputFieldValueNumber('add-amount');
     const pinNumber = getInputFieldValueNumber('add-pin');
 
-    const availAbleBalance=parseInt(document.getElementById("available-balance").innerText) ;
+    const availAbleBalance= getInnerText('available-balance');
 
      if (bankAccountNUmber.length !== 11 || isNaN(Number(bankAccountNUmber))) {
         alert("Invalid account number. It must be 11 digits.");
@@ -41,8 +54,8 @@ document.getElementById('add-money-btn').addEventListener('click',function(event
     }
 
     const totalNewAvailableBalance= addAmount + availAbleBalance;
-    document.getElementById("available-balance").innerText = totalNewAvailableBalance;
-
+    // document.getElementById("available-balance").innerText = totalNewAvailableBalance;
+    setInnertext(totalNewAvailableBalance);
     document.getElementById('bank').value= ""
     document.getElementById('account-number').value =""
     document.getElementById('add-amount').value=""
@@ -61,7 +74,7 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
     const agentNumber = getInputValueOnly('agent-number');
     const withdrawAmount = getInputFieldValueNumber("cash-out");
     const withDrawPin = getInputValueOnly('cash-out-pin');
-    const availableBalance = Number(document.getElementById("available-balance").innerText);
+    const availableBalance = getInnerText('available-balance');
 
     if (agentNumber.length !== 11 || isNaN(Number(agentNumber))) {
         alert("Invalid Agent number. It must be 11 digits.");
@@ -85,11 +98,51 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
 
    
     const availableBalanceAfterWithdraw = availableBalance - withdrawAmount;
-    document.getElementById('available-balance').innerText = availableBalanceAfterWithdraw;
-
+    // document.getElementById('available-balance').innerText = availableBalanceAfterWithdraw;
+    setInnertext(availableBalanceAfterWithdraw);
     document.getElementById("agent-number").value = '';
     document.getElementById("cash-out").value ='';
     document.getElementById("cash-out-pin").value ="";
+
+})
+
+/**
+ * Transfer Money
+ */
+
+
+document.getElementById("send-btn").addEventListener("click",function(){
+    const userAccountNumber =  getInputValueOnly("user-account-number");
+    const transferBalanceAmount = getInputFieldValueNumber("transfer-balance");
+    const transferPinNumber = getInputValueOnly('transfer-pin')
+    const availableBalance = getInnerText('available-balance');
+
+    if (userAccountNumber.length !== 11 || isNaN(Number(userAccountNumber))) {
+        alert("Invalid Account number. It must be 11 digits.");
+        return;
+    }
+
+    if (isNaN(transferBalanceAmount) || transferBalanceAmount <= 0) {
+        alert('Please Enter a Valid Amount');
+        return;
+    }
+
+    if (transferPinNumber.length !== 4 || isNaN(Number(transferPinNumber))) {
+        alert('Please Enter a Valid 4-digit Pin');
+        return;
+    }
+
+    if (transferBalanceAmount > availableBalance) {
+        alert("Insufficient Balance!");
+        return;
+    }
+
+    const availalableBalanceAfterTransfer = availableBalance - transferBalanceAmount
+    setInnertext(availalableBalanceAfterTransfer);
+
+    document.getElementById("user-account-number").value = '';
+    document.getElementById("transfer-balance").value ='';
+    document.getElementById("transfer-pin").value ="";
 
 })
 
@@ -98,12 +151,26 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
  */
 
 document.getElementById("add-money-cart").addEventListener('click',function(){
-    document.getElementById("cash-out-parent").style.display ='none';
-    document.getElementById("add-money-parent").style.display="block";
+    const forms = document.getElementsByClassName('form')
+    for (const form of forms) {
+        form.style.display = 'none'
+    }
+    document.getElementById('add-money-parent').style.display = 'block'
 })
 
 document.getElementById("cash-out-cart").addEventListener('click',function(){
-    document.getElementById("cash-out-parent").style.display ='block';
-    document.getElementById("add-money-parent").style.display="none";
+  const forms = document.getElementsByClassName('form')
+    for (const form of forms) {
+        form.style.display = 'none'
+    }
+    document.getElementById('cash-out-parent').style.display = 'block'
 })
 
+
+document.getElementById("transfer-money-cart").addEventListener('click',function(){
+  const forms = document.getElementsByClassName('form')
+    for (const form of forms) {
+        form.style.display = 'none'
+    }
+    document.getElementById('transfer-money-parent').style.display = 'block'
+})
