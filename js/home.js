@@ -1,3 +1,7 @@
+/**
+ * cash in
+ */
+
 document.getElementById('add-money-btn').addEventListener('click',function(event){
     event.preventDefault();
     const bankSelect = document.getElementById('bank').value;
@@ -24,5 +28,55 @@ document.getElementById('add-money-btn').addEventListener('click',function(event
 
     const totalNewAvailableBalance= addAmount + availAbleBalance;
     document.getElementById("available-balance").innerText = totalNewAvailableBalance;
+
+    document.getElementById('bank').value= ""
+    document.getElementById('account-number').value =""
+    document.getElementById('add-amount').value=""
+    document.getElementById('add-pin').value =""
+
+
+})
+
+
+/**
+ * Cash Out 
+ */
+
+document.getElementById('cash-out-btn').addEventListener('click', function(event) {
+    event.preventDefault();
+
+    const agentNumber = document.getElementById("agent-number").value;
+    const withdrawAmount = Number(document.getElementById("cash-out").value);
+    const withDrawPin = document.getElementById("cash-out-pin").value;
+    const availableBalance = Number(document.getElementById("available-balance").innerText);
+
+    if (agentNumber.length !== 11 || isNaN(Number(agentNumber))) {
+        alert("Invalid Agent number. It must be 11 digits.");
+        return;
+    }
+
+   
+    if (isNaN(withdrawAmount) || withdrawAmount <= 0) {
+        alert('Please Enter a Valid Amount');
+        return;
+    }
+
+    if (withDrawPin.length !== 4 || isNaN(Number(withDrawPin))) {
+        alert('Please Enter a Valid 4-digit Pin');
+        return;
+    }
+
+    if (withdrawAmount > availableBalance) {
+        alert("Insufficient Balance!");
+        return;
+    }
+
+   
+    const availableBalanceAfterWithdraw = availableBalance - withdrawAmount;
+    document.getElementById('available-balance').innerText = availableBalanceAfterWithdraw;
+
+    document.getElementById("agent-number").value = '';
+    document.getElementById("cash-out").value ='';
+    document.getElementById("cash-out-pin").value ="";
 
 })
