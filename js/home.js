@@ -47,6 +47,15 @@ function handleToggle(id){
     document.getElementById(id).style.display = 'block'
 }
 
+function handleToggleStyle(id){
+    const cartBtn = document.getElementsByClassName('cart-btn');
+    for (const btn of cartBtn) {
+       btn.classList.remove('border-[#0874F2]','bg-[#0874f20d]') 
+    }
+    document.getElementById(id).classList.remove('border-gray-300') 
+    document.getElementById(id).classList.add('border-[#0874F2]','bg-[#0874f20d]')
+}
+
 document.getElementById('add-money-btn').addEventListener('click',function(event){
     event.preventDefault();
     const bankSelect = getInputValueOnly('bank');
@@ -225,24 +234,34 @@ document.getElementById('pay-bill-btn').addEventListener('click', function(event
 
 document.getElementById("add-money-cart").addEventListener('click',function(){
     handleToggle('add-money-parent');
+    handleToggleStyle('add-money-cart');
 })
 
 document.getElementById("cash-out-cart").addEventListener('click',function(){
  
     handleToggle('cash-out-parent');
+    handleToggleStyle('cash-out-cart')
 })
 
 
 document.getElementById("transfer-money-cart").addEventListener('click',function(){
 
     handleToggle('transfer-money-parent');
+    handleToggleStyle('transfer-money-cart')
 })
 document.getElementById("get-bonus-cart").addEventListener('click',function(){
 
     handleToggle('get-bonus-parent');
+    handleToggleStyle('get-bonus-cart')
 })
 document.getElementById("pay-bill-cart").addEventListener('click',function(){
 
     handleToggle('pay-bill-parent');
+    handleToggleStyle('pay-bill-cart')
+})
+document.getElementById("transactions-cart").addEventListener('click',function(){
+
+   
+    handleToggleStyle('transactions-cart')
 })
 
