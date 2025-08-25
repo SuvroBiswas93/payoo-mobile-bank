@@ -13,7 +13,7 @@
     <link rel="shortcut icon" href="./payoo.png" type="image/x-icon">
 </head>
 
-<body class="bg-[#F4F5F7] h-[100vh]">
+<body class="bg-[#F4F5F7] h-[100%]">
 
     <div class="max-w-lg mx-auto bg-white rounded-b-xl ">
         <div class="flex justify-between items-center  min-h-[50px]  border-b-1 border-gray-400 p-3 ">
@@ -82,7 +82,38 @@
     </div>
     </div>
 
-
+    <div class="all-forms-section max-w-lg mx-auto">
+        <!-- Add money -->
+       <div class="">
+            <h1 class="font-bold my-3">Add Money</h1>
+            <form class=" bg-white rounded-2xl p-8 ">
+                <div class="mb-3">
+                    <label class="font-semibold">Select A Bank</label><br>
+                       <select class="select rounded-3xl bg-[#F4F5F7] mt-3 w-full">
+                        <option disabled selected>Select Bank</option>
+                        <option>Nrbc Bank</option>
+                        <option>Brac Bank</option>
+                        <option>IFIC Bank</option>
+                        </select>
+                </div>
+                 <div class="">
+                     <label class="font-semibold">Bank Account Number</label> <br>
+                     <input id="account-number" type="text" placeholder="Enter 11 Digit Acoount Number" class="input rounded-3xl bg-[#F4F5F7] mt-3 w-full" />
+                </div>
+                <div class="mt-3">
+                    <label class="font-semibold">Amount to Add</label><br>
+                    <input id="add-amount"  type="text" placeholder="Add Amount" class="input rounded-3xl bg-[#F4F5F7] mt- w-full" />
+                </div>
+               
+                <div class="mt-3">
+                    <label class="font-semibold">Pin Number</label> <br>
+                    <input id="" type="text" placeholder="Enter 4 Digit Pin" class="input rounded-3xl bg-[#F4F5F7] mt-3 w-full" />
+                </div>
+                <button id="add-money-btn" class="btn bg-[#0874F2] rounded-3xl mt-7 w-full text-white">Add Money</button>
+            </form>
+       </div>
+    </div>
+<script src="./js/home.js"></script>
 </body>
 
 </html>
