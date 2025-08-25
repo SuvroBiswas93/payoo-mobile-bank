@@ -58,9 +58,9 @@ document.getElementById('add-money-btn').addEventListener('click',function(event
 document.getElementById('cash-out-btn').addEventListener('click', function(event) {
     event.preventDefault();
 
-    const agentNumber = document.getElementById("agent-number").value;
-    const withdrawAmount = Number(document.getElementById("cash-out").value);
-    const withDrawPin = document.getElementById("cash-out-pin").value;
+    const agentNumber = getInputValueOnly('agent-number');
+    const withdrawAmount = getInputFieldValueNumber("cash-out");
+    const withDrawPin = getInputValueOnly('cash-out-pin');
     const availableBalance = Number(document.getElementById("available-balance").innerText);
 
     if (agentNumber.length !== 11 || isNaN(Number(agentNumber))) {
@@ -68,7 +68,6 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
         return;
     }
 
-   
     if (isNaN(withdrawAmount) || withdrawAmount <= 0) {
         alert('Please Enter a Valid Amount');
         return;
