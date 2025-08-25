@@ -111,7 +111,8 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
  */
 
 
-document.getElementById("send-btn").addEventListener("click",function(){
+document.getElementById("send-btn").addEventListener("click",function(event){
+    event.preventDefault();
     const userAccountNumber =  getInputValueOnly("user-account-number");
     const transferBalanceAmount = getInputFieldValueNumber("transfer-balance");
     const transferPinNumber = getInputValueOnly('transfer-pin')
@@ -139,6 +140,7 @@ document.getElementById("send-btn").addEventListener("click",function(){
 
     const availalableBalanceAfterTransfer = availableBalance - transferBalanceAmount
     setInnertext(availalableBalanceAfterTransfer);
+    console.log(transferBalanceAmount,transferPinNumber)
 
     document.getElementById("user-account-number").value = '';
     document.getElementById("transfer-balance").value ='';
