@@ -2,12 +2,26 @@
  * cash in
  */
 
+function getInputFieldValueNumber(id){
+    const inputField = document.getElementById(id);
+    const inputFieldValue = document.getElementById(id).value;
+    const inputFieldValueNumber = parseInt(document.getElementById(id).value)
+    return inputFieldValueNumber;
+}
+
+function getInputValueOnly(id){
+    const inputField = document.getElementById(id);
+    const inputFieldValue = document.getElementById(id).value;
+    return inputFieldValue;
+}
+
+
 document.getElementById('add-money-btn').addEventListener('click',function(event){
     event.preventDefault();
-    const bankSelect = document.getElementById('bank').value;
-    const bankAccountNUmber=document.getElementById('account-number').value;
-    const addAmount =parseInt(document.getElementById('add-amount').value) ;
-    const pinNumber =parseInt(document.getElementById('add-pin').value);
+    const bankSelect = getInputValueOnly('bank');
+    const bankAccountNUmber = getInputValueOnly('account-number');
+    const addAmount = getInputFieldValueNumber('add-amount');
+    const pinNumber = getInputFieldValueNumber('add-pin');
 
     const availAbleBalance=parseInt(document.getElementById("available-balance").innerText) ;
 
@@ -36,7 +50,6 @@ document.getElementById('add-money-btn').addEventListener('click',function(event
 
 
 })
-
 
 /**
  * Cash Out 
@@ -80,3 +93,18 @@ document.getElementById('cash-out-btn').addEventListener('click', function(event
     document.getElementById("cash-out-pin").value ="";
 
 })
+
+/**
+ * Add toggling feature for the homepage carts
+ */
+
+document.getElementById("add-money-cart").addEventListener('click',function(){
+    document.getElementById("cash-out-parent").style.display ='none';
+    document.getElementById("add-money-parent").style.display="block";
+})
+
+document.getElementById("cash-out-cart").addEventListener('click',function(){
+    document.getElementById("cash-out-parent").style.display ='block';
+    document.getElementById("add-money-parent").style.display="none";
+})
+
