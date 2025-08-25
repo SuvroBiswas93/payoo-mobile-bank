@@ -51,6 +51,7 @@ function handleToggleStyle(id){
     const cartBtn = document.getElementsByClassName('cart-btn');
     for (const btn of cartBtn) {
        btn.classList.remove('border-[#0874F2]','bg-[#0874f20d]') 
+       btn.classList.add('border-gray-300');
     }
     document.getElementById(id).classList.remove('border-gray-300') 
     document.getElementById(id).classList.add('border-[#0874F2]','bg-[#0874f20d]')
