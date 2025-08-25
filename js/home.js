@@ -156,6 +156,45 @@ document.getElementById("send-btn").addEventListener("click",function(event){
 
 })
 
+
+/**
+ * Pay Bill
+ */
+
+document.getElementById('pay-bill-btn').addEventListener('click', function(event) {
+    event.preventDefault();
+    const bankSelect = getInputValueOnly('pay-bill-bank-selection');
+    const billerAccountNUmber = getInputValueOnly('biller-account-number');
+    const payableAmount = getInputFieldValueNumber('payable-amount');
+    const billPinNumber = getInputFieldValueNumber('pay-bill-pin');
+
+    const availAbleBalance= getInnerText('available-balance');
+
+     if (billerAccountNUmber.length !== 11 || isNaN(Number(billerAccountNUmber))) {
+        alert("Invalid account number. It must be 11 digits.");
+        return;
+    }
+
+    
+    if (isNaN(payableAmount) || payableAmount <= 0) {
+        alert("Please enter a valid amount.");
+        return;
+    }
+    if (isNaN(billPinNumber)) {
+        alert("Please enter a valid PIN.");
+        return;
+    }
+
+    const NewAvailableBalance= availAbleBalance - payableAmount;
+    // document.getElementById("available-balance").innerText = totalNewAvailableBalance;
+    setInnertext(NewAvailableBalance);
+    document.getElementById('pay-bill-bank-selection').value= ""
+    document.getElementById('biller-account-number').value =""
+    document.getElementById('payable-amount').value=""
+    document.getElementById('pay-bill-pin').value =""
+
+})
+
 /**
  * Add toggling feature for the homepage carts
  */
@@ -173,4 +212,8 @@ document.getElementById("cash-out-cart").addEventListener('click',function(){
 document.getElementById("transfer-money-cart").addEventListener('click',function(){
 
     handleToggle('transfer-money-parent');
+})
+document.getElementById("pay-bill-cart").addEventListener('click',function(){
+
+    handleToggle('pay-bill-parent');
 })
