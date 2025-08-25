@@ -1,4 +1,14 @@
 /**
+ * Log Out Button
+ */
+
+document.getElementById('log-out-btn').addEventListener('click',function(){
+     window.location.href = "./index.html"
+})
+
+
+
+/**
  * cash in
  */
 
@@ -156,7 +166,21 @@ document.getElementById("send-btn").addEventListener("click",function(event){
 
 })
 
+/**
+ * Get Bonus
+ */
 
+document.getElementById('get-bonus-btn').addEventListener('click',function(event){
+    event.preventDefault();
+    const couponName = 'Payoo10';
+    const input = getInputValueOnly('get-bonus');
+    if(input === couponName){
+        alert('🎉🎉Congratulations you have got 10% Discount🎁🎁')
+    }
+    else{
+        alert('Invalid Coupon!!');
+    }
+})
 /**
  * Pay Bill
  */
@@ -213,7 +237,12 @@ document.getElementById("transfer-money-cart").addEventListener('click',function
 
     handleToggle('transfer-money-parent');
 })
+document.getElementById("get-bonus-cart").addEventListener('click',function(){
+
+    handleToggle('get-bonus-parent');
+})
 document.getElementById("pay-bill-cart").addEventListener('click',function(){
 
     handleToggle('pay-bill-parent');
 })
+

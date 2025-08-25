@@ -27,7 +27,7 @@
 
         </div>
         <div>
-            <button class="btn text-[#080808]/50">
+            <button id="log-out-btn" class="btn text-[#080808]/50">
                 <i class="fa-solid fa-arrow-right-from-bracket rotate-180 text-gray-700"></i>
                 Log Out
             </button>
@@ -60,7 +60,7 @@
 
 
         </div>
-        <div class="border-2 border-gray-300 p-3 rounded-xl cursor-pointer">
+        <div id="get-bonus-cart" class="border-2 border-gray-300 p-3 rounded-xl cursor-pointer">
             <img src="./assets/bonus1.png" alt="" class="mx-auto">
             <p class="text-center">Get Bonus</p>
 
@@ -156,8 +156,20 @@
             </form>
        </div>
 
+       <!-- Get Bonus -->
+        <div class="form" id="get-bonus-parent" style="display: none;" >
+            <h1 class="font-bold my-3">Get Bonus</h1>
+            <form class=" bg-white rounded-2xl p-8 ">
+                 <div >
+                     <label class="font-semibold">Enter Your Coupon</label> <br>
+                     <input id="get-bonus" type="text" placeholder="Enter Payoo10 to get 10% Discount" class="input rounded-3xl bg-[#F4F5F7] mt-3 w-full" />
+                </div>
+                <button id="get-bonus-btn" class="btn bg-[#0874F2] rounded-3xl mt-7 w-full text-white">Get Bonus</button>
+            </form>
+       </div>
+
        <!-- Pay Bill -->
-       <div id="pay-bill-parent" class="form">
+       <div id="pay-bill-parent" class="form" style="display: none;">
             <h1 class="font-bold my-3">Pay Bill</h1>
             <form class=" bg-white rounded-2xl p-8 ">
                 <div class="mb-3">
