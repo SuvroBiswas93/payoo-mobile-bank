@@ -29,6 +29,14 @@ function setInnertext(value){
     
 }
 
+function handleToggle(id){
+     const forms = document.getElementsByClassName('form')
+    for (const form of forms) {
+        form.style.display = 'none'
+    }
+    document.getElementById(id).style.display = 'block'
+}
+
 document.getElementById('add-money-btn').addEventListener('click',function(event){
     event.preventDefault();
     const bankSelect = getInputValueOnly('bank');
@@ -153,26 +161,16 @@ document.getElementById("send-btn").addEventListener("click",function(event){
  */
 
 document.getElementById("add-money-cart").addEventListener('click',function(){
-    const forms = document.getElementsByClassName('form')
-    for (const form of forms) {
-        form.style.display = 'none'
-    }
-    document.getElementById('add-money-parent').style.display = 'block'
+    handleToggle('add-money-parent');
 })
 
 document.getElementById("cash-out-cart").addEventListener('click',function(){
-  const forms = document.getElementsByClassName('form')
-    for (const form of forms) {
-        form.style.display = 'none'
-    }
-    document.getElementById('cash-out-parent').style.display = 'block'
+ 
+    handleToggle('cash-out-parent');
 })
 
 
 document.getElementById("transfer-money-cart").addEventListener('click',function(){
-  const forms = document.getElementsByClassName('form')
-    for (const form of forms) {
-        form.style.display = 'none'
-    }
-    document.getElementById('transfer-money-parent').style.display = 'block'
+
+    handleToggle('transfer-money-parent');
 })
